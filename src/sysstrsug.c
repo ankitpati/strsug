@@ -63,8 +63,10 @@ char *strinbuf(char *hay, char *ned)
     size_t pos, nlen, htest, i;
 
     for (nlen = 0; ned[nlen]; ++nlen);
-    for (htest = 0; hay[htest] != '\n' && htest < nlen; ++htest);
+    if (!nlen)
+        return hay;
 
+    for (htest = 0; hay[htest] != '\n' && htest < nlen; ++htest);
     if (htest != nlen)
         return NULL;
 
